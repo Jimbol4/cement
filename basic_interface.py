@@ -1,9 +1,18 @@
 from cement.core.foundation import CementApp
 from cement.core.interface import Interface, Attribute
 
+def my_validator(klass, obj):
+    members = [
+    '_setup',
+    'do_something',
+    'my_var'
+    ]
+    interface.validate(MyInterface, obj, members)
+
 class MyInterface(Interface):
     class IMeta:
         label = 'myinterface'
+        validator = my_validator
 
     Meta = Attribute('Handler Meta-data')
     my_var = Attribute('A variable of epic proportions.')
